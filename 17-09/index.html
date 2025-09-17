@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Funcionário</title>
+ <link rel="stylesheet" href="styles.css">
+ <script defer src="script.js"></script>
+</head>
+
+
+<body>
+
+  <h1>Cadastro de Funcionário</h1>
+
+  <form id="formFuncionario">
+    <label>Nome:
+      <input type="text" id="nome" required>
+    </label>
+
+    <label>Salário:
+      <input type="number" id="salario" required>
+    </label>
+
+    <label>Cargo:
+      <input type="text" id="cargo" required>
+    </label>
+
+    <label>Idade:
+      <input type="number" id="idade" required>
+    </label>
+
+    <label>CPF:
+      <input type="text" id="cpf" required>
+    </label>
+
+    <label>Departamento:
+      <select id="departamento" required>
+        <option value="">Selecione...</option>
+        <option value="RH">RH</option>
+        <option value="Financeiro">Financeiro</option>
+        <option value="TI">TI</option>
+        <option value="Comercial">Comercial</option>
+      </select>
+    </label>
+<!---->
+    <label>Estado Civil:</label>
+    <label><input type="radio" name="estadoCivil" value="Solteiro" required> Solteiro</label>
+    <label><input type="radio" name="estadoCivil" value="Casado"> Casado</label>
+    <label><input type="radio" name="estadoCivil" value="Divorciado"> Divorciado</label>
+    <label><input type="radio" name="estadoCivil" value="Viúvo"> Viúvo</label>
+
+<!--Botão-->
+    <button type="button" onclick="cadastrarFuncionario()">Cadastrar Funcionário</button>
+  </form>
+
+  <h2>Funcionários Cadastrados:</h2>
+  <ul id="listaFuncionarios"></ul>
+   
+</body>
+
+</html>
+
