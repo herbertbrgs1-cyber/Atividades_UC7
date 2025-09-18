@@ -7,6 +7,7 @@
       const departamento = document.getElementById("departamento").value;
       const estadoCivil = document.querySelector("input[name='estadoCivil']:checked")?.value;
 
+      
       if (!estadoCivil) {
         alert("Selecione o estado civil!");
         return;
@@ -17,6 +18,6 @@
 
       document.getElementById("listaFuncionarios").appendChild(li);
 
-      document.getElementById("formFuncionario").reset(); // limpa o formulário
+      document.getElementById("formFuncionario").reset();
     }
  
