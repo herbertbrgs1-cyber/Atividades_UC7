@@ -1,120 +1,25 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
 body {
-  font-family: 'Roboto', sans-serif;
-  background: #f5f7fa;
-  color: #333;
-  margin: 0;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  font-family: Arial, sans-serif;
+  margin: 20px;
 }
 
 h1, h2 {
-  color: #2c3e50;
-  text-align: center;
+  color: #333;
+}
+
+form {
   margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 320px;
 }
 
-form#formReserva {
-  background: #ffffff;
-  padding: 30px 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(44, 62, 80, 0.1);
-  max-width: 400px;
-  width: 100%;
-  box-sizing: border-box;
+input, select, button {
+  margin-top: 5px;
 }
 
-form#formReserva label {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: #34495e;
-}
-
-form#formReserva input[type="text"],
-form#formReserva select,
-form#formReserva input[type="date"] {
-  width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 20px;
-  border: 1.5px solid #bdc3c7;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: border-color 0.3s ease;
-}
-
-form#formReserva input[type="text"]:focus,
-form#formReserva select:focus,
-form#formReserva input[type="date"]:focus {
-  border-color: #2980b9;
-  outline: none;
-}
-
-form#formReserva input[type="radio"] {
-  margin-left: 10px;
-  margin-right: 5px;
-  cursor: pointer;
-}
-
-form#formReserva button[type="submit"] {
-  background-color: #2980b9;
-  color: white;
-  font-weight: 700;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
-  transition: background-color 0.3s ease;
-}
-
-form#formReserva button[type="submit"]:hover {
-  background-color: #1c5980;
-}
-
-h2 {
-  margin-top: 40px;
-}
-
-ul#listaReservas {
-  max-width: 400px;
-  width: 100%;
-  list-style: none;
-  padding: 0;
-  margin: 0 auto 40px auto;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(44, 62, 80, 0.1);
-  box-sizing: border-box;
-}
-
-ul#listaReservas li {
-  padding: 15px 20px;
-  border-bottom: 1px solid #ecf0f1;
-  font-size: 16px;
-  color: #34495e;
-}
-
-ul#listaReservas li:last-child {
-  border-bottom: none;
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-  body {
-    padding: 15px;
-  }
-
-  form#formReserva {
-    padding: 20px;
-  }
-
-  ul#listaReservas {
-    max-width: 100%;
-  }
+li {
+  margin: 5px 0;
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
 }
