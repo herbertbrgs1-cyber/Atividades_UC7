@@ -1,34 +1,50 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('cadastroForm');
-    const dadosDiv = document.getElementById('dadosUsuario');
+function cadastrarFuncionario(e) {
+  e.preventDefault();
 
-    displayStoredData();
+  const funcionario = {
+    nome: document.getElementById("nome").value,
+    idade: document.getElementById("idade").value,
+    cargo: document.getElementById("cargo").value,
+    salario: document.getElementById("salario").value,
+    departamento: document.getElementById("departamento").value,
+  };
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
+  let funcionarios = JSON.parse(localStorage.getItem("funcionarios")) || [];
+  funcionarios.push(funcionario);
+  localStorage.setItem("funcionarios", JSON.stringify(funcionarios));
 
-        const nome = document.getElementById('nome').value;
-        const idade = document.getElementById('idade').value;
-        const altura = document.getElementById('altura').value;
+  carregarFuncionarios();
+  e.target.reset();
+}
 
-        if (nome && idade && altura) {
-            const userData = { nome, idade, altura };
-            localStorage.setItem('userData', JSON.stringify(userData));
-            alert('Dados cadastrados com sucesso!');
-            form.reset();
-            displayStoredData();
-        } else {
-            alert('Por favor, preencha todos os campos.');
-        }
-    });
+function carregarFuncionarios() {
+  const tabela = document.querySelector("#tabela-funcionarios tbody");
+  tabela.innerHTML = "";
 
-    function displayStoredData() {
-        const storedData = localStorage.getItem('userData');
-        if (storedData) {
-            const userData = JSON.parse(storedData);
-            dadosDiv.innerHTML = `<p>Nome: ${userData.nome}</p><p>Idade: ${userData.idade}</p><p>Altura: ${userData.altura} cm</p>`;
-        } else {
-            dadosDiv.innerHTML = '<p>Nenhum dado armazenado.</p>';
-        }
-    }
-});
+  let funcionarios = JSON.parse(localStorage.getItem("funcionarios")) || [];
+
+  funcionarios.forEach((f, index) => {
+    let tr = document.createElement("tr");
+
+    tr.innerHTML = `
+      <td>${f.nome}</td>
+      <td>${f.idade}</td>
+      <td>${f.cargo}</td>
+      <td>${f.salario}</td>
+      <td>${f.departamento}</td>
+      <td><button onclick="mostrarFuncionario(${index})">Ver</button></td>
+    `;
+
+    tabela.appendChild(tr);
+  });
+}
+
+function mostrarFuncionario(index) {
+  let funcionarios = JSON.parse(localStorage.getItem("funcionarios")) || [];
+  let f = funcionarios[index];
+  alert(
+    `Nome: ${f.nome}\nIdade: ${f.idade}\nCargo: ${f.cargo}\nSalário: ${f.salario}\nDepartamento: ${f.departamento}`
+  );
+}
+
+window.onload = carregarFuncionarios;
