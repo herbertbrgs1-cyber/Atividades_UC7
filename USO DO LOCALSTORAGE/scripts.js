@@ -32,7 +32,10 @@ function carregarFuncionarios() {
       <td>${f.cargo}</td>
       <td>${f.salario}</td>
       <td>${f.departamento}</td>
-      <td><button onclick="mostrarFuncionario(${index})">Ver</button></td>
+      <td>
+        <button onclick="mostrarFuncionario(${index})">Ver</button>
+        <button onclick="removerFuncionario(${index})">Remover</button>
+      </td>
     `;
 
     tabela.appendChild(tr);
@@ -45,6 +48,13 @@ function mostrarFuncionario(index) {
   alert(
     `Nome: ${f.nome}\nIdade: ${f.idade}\nCargo: ${f.cargo}\nSalário: ${f.salario}\nDepartamento: ${f.departamento}`
   );
+}
+
+function removerFuncionario(index) {
+  let funcionarios = JSON.parse(localStorage.getItem("funcionarios")) || [];
+  funcionarios.splice(index, 1); 
+  localStorage.setItem("funcionarios", JSON.stringify(funcionarios));
+  carregarFuncionarios(); 
 }
 
 window.onload = carregarFuncionarios;
