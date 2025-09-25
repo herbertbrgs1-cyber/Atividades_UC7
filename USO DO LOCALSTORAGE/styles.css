@@ -30,4 +30,15 @@ button {
   margin: 3px;
   padding: 5px 10px;
   cursor: pointer;
+
+}
+
+.remover-btn {
+  background-color: red;
+  color: white;
+}
+
+.ver-btn {
+  background-color: green;
+  color: white;
 }

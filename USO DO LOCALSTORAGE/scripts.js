@@ -33,8 +33,8 @@ function carregarFuncionarios() {
       <td>${f.salario}</td>
       <td>${f.departamento}</td>
       <td>
-        <button onclick="mostrarFuncionario(${index})">Ver</button>
-        <button onclick="removerFuncionario(${index})">Remover</button>
+        <button class="ver-btn" onclick="verFuncionario(${index})">Ver</button>
+        <button class="remover-btn" onclick="removerFuncionario(${index})">Remover</button>
       </td>
     `;
 
