@@ -1,4 +1,4 @@
-function cadastrarFuncionario(e) {
+function salvarFuncionario(e) {
   e.preventDefault();
 
   const funcionario = {
@@ -10,7 +10,17 @@ function cadastrarFuncionario(e) {
   };
 
   let funcionarios = JSON.parse(localStorage.getItem("funcionarios")) || [];
-  funcionarios.push(funcionario);
+  let editIndex = document.getElementById("editIndex").value;
+
+  if (editIndex === "") {
+    
+    funcionarios.push(funcionario);
+  } else {
+    
+    funcionarios[editIndex] = funcionario;
+    document.getElementById("editIndex").value = "";
+  }
+
   localStorage.setItem("funcionarios", JSON.stringify(funcionarios));
 
   carregarFuncionarios();
@@ -33,7 +43,8 @@ function carregarFuncionarios() {
       <td>${f.salario}</td>
       <td>${f.departamento}</td>
       <td>
-        <button class="ver-btn" onclick="verFuncionario(${index})">Ver</button>
+        <button class="ver-btn" onclick="mostrarFuncionario(${index})">Ver</button>
+        <button class="editar-btn" onclick="editarFuncionario(${index})">Editar</button>
         <button class="remover-btn" onclick="removerFuncionario(${index})">Remover</button>
       </td>
     `;
@@ -50,11 +61,27 @@ function mostrarFuncionario(index) {
   );
 }
 
+function editarFuncionario(index) {
+  let funcionarios = JSON.parse(localStorage.getItem("funcionarios")) || [];
+  let f = funcionarios[index];
+
+  document.getElementById("nome").value = f.nome;
+  document.getElementById("idade").value = f.idade;
+  document.getElementById("cargo").value = f.cargo;
+  document.getElementById("salario").value = f.salario;
+  document.getElementById("departamento").value = f.departamento;
+  document.getElementById("editIndex").value = index;
+}
+
 function removerFuncionario(index) {
   let funcionarios = JSON.parse(localStorage.getItem("funcionarios")) || [];
   funcionarios.splice(index, 1); 
   localStorage.setItem("funcionarios", JSON.stringify(funcionarios));
   carregarFuncionarios(); 
+}
+
+function cancelarEdicao() {
+  document.getElementById("editIndex").value = "";
 }
 
 window.onload = carregarFuncionarios;
