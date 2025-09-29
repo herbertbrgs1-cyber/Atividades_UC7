@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciador de Tarefas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Gerenciamento de Tarefas</h1>
+  </header>
+
+  <div class="container">
+    <!-- Formulário de cadastro -->
+    <form class="default-form" id="form-tarefa" onsubmit="cadastrarTarefa(event)">
+    <label for="campo-titulo">Título</label> <br>
+    <input id="campo-titulo" type="text" placeholder="Digite o título da tarefa" required><br>
+
+    <label for="campo-descricao">Descrição</label><br>
+    <textarea id="campo-descricao" placeholder="Digite a descrição da tarefa" ></textarea><br>
+
+    <label for="campo-data-inicio">Data de Início</label><br>
+    <input id="campo-data-inicio" type="date" required><br>
+
+    <label for="campo-data-final">Data Final</label><br>
+    <input id="campo-data-final" type="date" required><br>
+
+  
+
+    <label for="campo-status">Status</label><br>
+    <select id="campo-status" required><br>
+      <option value="" disabled selected hidden>Selecione o status</option>
+      <option value="Pendente">Pendente</option>
+      <option value="Em andamento">Em andamento</option>
+      <option value="Concluída">Concluída</option>
+    </select>
+
+    <div class="form-buttons"><br>
+      <button type="submit">Cadastrar</button>
+      <button type="reset">Limpar</button>
+    </div>
+  </form>
+
+  <!-- Tabela de listagem -->
+  <section>
+    <h1>Lista de Tarefas</h1>
+    <table id="tabela-tarefas">
+      <thead>
+        <tr>
+          <th>TÍTULO</th>
+          <th>DESCRIÇÃO</th>
+          <th>DATA INÍCIO</th>
+          <th>DATA FINAL</th>
+          <th>STATUS</th>
+          <th>AÇÕES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Linhas criadas dinamicamente -->
+      </tbody>
+    </table>
+  </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
