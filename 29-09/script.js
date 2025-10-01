@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const taskForm = document.getElementById('task-form');
     const taskList = document.getElementById('task-list');
+    let editingTaskId = null;
 
-    
     loadTasks();
 
     
@@ -29,19 +29,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const date = document.getElementById('task-date').value;
         const description = document.getElementById('task-description').value;
 
-        const newTask = {
-            id: Date.now(), 
-            name,
-            status,
-            date,
-            description
-        };
-
         const tasks = getTasks();
-        tasks.push(newTask);
-        saveTasks(tasks);
 
-        
+        if (editingTaskId) {
+            
+            const taskIndex = tasks.findIndex(t => t.id === editingTaskId);
+            if (taskIndex !== -1) {
+                tasks[taskIndex] = {
+                    id: editingTaskId,
+                    name,
+                    status,
+                    date,
+                    description
+                };
+            }
+            editingTaskId = null;
+            document.querySelector('.btn-submit').textContent = 'Adicionar Tarefa';
+        } else {
+            
+            const newTask = {
+                id: Date.now(),
+                name,
+                status,
+                date,
+                description
+            };
+            tasks.push(newTask);
+        }
+
+        saveTasks(tasks);
         taskForm.reset();
         displayTasks(tasks);
     }
@@ -101,12 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const tasks = getTasks();
         const task = tasks.find(t => t.id === id);
         if (task) {
-           
+            editingTaskId = id;
             document.getElementById('task-name').value = task.name;
             document.getElementById('task-status').value = task.status;
             document.getElementById('task-date').value = task.date;
             document.getElementById('task-description').value = task.description;
-            removeTask(id);
+            document.querySelector('.btn-submit').textContent = 'Atualizar Tarefa';
         }
     }
 

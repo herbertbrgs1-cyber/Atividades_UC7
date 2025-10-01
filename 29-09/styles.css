@@ -2,7 +2,7 @@
 /* 1. Reset e Estilos Globais (Seletores de Tipo) */
 /* -------------------------------------- */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     background-color: #e9ecef; /* Fundo suave */
     color: #343a40;
     margin: 0;
@@ -100,6 +100,10 @@ h2 {
     border-left: 6px solid #ccc; /* Linha de destaque neutra */
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* Flexbox para alinhar os detalhes da tarefa à esquerda e os botões à direita na mesma linha */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .task-details strong {
@@ -141,7 +145,7 @@ h2 {
 /* 6. Estilização das Ações das Tarefas */
 /* -------------------------------------- */
 .task-actions {
-    margin-top: 10px;
+    display: flex;
 }
 
 .btn-edit, .btn-remove {
@@ -151,6 +155,8 @@ h2 {
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.9em;
+    
+
 }
 
 .btn-edit {
@@ -165,8 +171,12 @@ h2 {
 .btn-remove {
     background-color: #dc3545;
     color: white;
+    
 }
 
 .btn-remove:hover {
-    background-color: #c82333;
+    background-color: #bd1b06;
+    
 }
+
+
